@@ -2,7 +2,7 @@ import Appointment from '../models/Appointment';
 import { EntityRepository, Repository } from 'typeorm';
 
 interface CreateAppointment {
-    provider: string;
+    provider_id: string;
     date: Date;
 }
 
@@ -19,9 +19,9 @@ class AppointmentRepository extends Repository<Appointment>{
         return findAppointment || null;
     }
 
-    public async createAppointment({ provider, date }: CreateAppointment):Promise<Appointment> {
+    public async createAppointment({ provider_id, date }: CreateAppointment):Promise<Appointment> {
         const appointment = await this.create({
-            provider,
+            provider_id,
             date
         });
 
